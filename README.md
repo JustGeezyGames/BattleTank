@@ -3,3 +3,4 @@ An open world head to head tank with simple AI, terrain, and control system in U
 
 
 * Just getting started
+* Setting up GitHub
