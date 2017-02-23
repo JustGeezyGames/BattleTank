@@ -44,6 +44,7 @@
 SourceArt/**/*.png
 SourceArt/**/*.tga
 */StarterContent
+*/BT17-Firing*
 
 # Binary Files
 Binaries/*
