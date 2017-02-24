@@ -11,21 +11,13 @@ void ATankAIController::BeginPlay()
 	ATank* ControlledAI = GetControlledAI();
 	if (!ControlledAI)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("AI possessing a tank"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AI controller possessing %s"), *(ControlledAI->GetName()));
+		UE_LOG(LogTemp, Warning, TEXT("AI not possessing a tank"));
 	}
 
 	ATank* PlayerTank = GetPlayerTank();
 	if (!PlayerTank)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AI can't find player"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("%s targetting player tank (%s)"), *(ControlledAI->GetName()), *PlayerTank->GetName());
 	}
 }
 

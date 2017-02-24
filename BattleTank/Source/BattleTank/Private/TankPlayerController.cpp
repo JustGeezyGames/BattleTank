@@ -13,10 +13,6 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Not possessing a tank"));
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player controller possessing %s"), *(ControlledTank->GetName()));
-	}
 }
 
 // Called every frame
