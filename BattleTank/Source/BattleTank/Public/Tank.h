@@ -29,6 +29,10 @@ public:
 	//Barrel Reference is set in Blueprint
 	void SetTurretReference(UTankTurret* TurretToSet);
 
+	UFUNCTION(BlueprintCallable)
+	//Barrel Reference is set in Blueprint
+	void Fire();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

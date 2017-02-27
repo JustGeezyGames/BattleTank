@@ -18,6 +18,6 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Setup")
-		float MaxRotationPerSecond = 15.f;
+	float MaxRotationPerSecond = 15.f;
 	
 };
