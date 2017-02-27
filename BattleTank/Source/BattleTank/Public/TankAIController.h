@@ -22,7 +22,8 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	ATank* GetControlledAI() const;
-	ATank* GetPlayerTank() const;
+
+	ATank* PlayerTank = nullptr;
+	ATank* ControlledAI = nullptr;
 	
 };
