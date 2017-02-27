@@ -2,6 +2,9 @@
 
 #include "BattleTank.h"
 #include "TankAimingComponent.h"
+#include "TankBarrel.h"
+#include "Projectile.h"
+//#include "ProjectileMovementComponent.h"
 #include "Tank.h"
 
 
@@ -34,6 +37,7 @@ void ATank::AimAt(FVector HitLocation)
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
 }
 
 void ATank::SetTurretReference(UTankTurret* TurretToSet)
@@ -43,5 +47,16 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Tank is firing"))
+	if (!Barrel) 
+	{ 
+		UE_LOG(LogTemp, Warning, TEXT("Barrel not found to Fire"))
+			return;
+	}
+
+	//Spawn a projectile at the socket location on the barrel
+	FVector POO = Barrel->GetSocketLocation(FName("Projectile"));
+	FRotator Rotation = Barrel->GetSocketRotation(FName("Projectile"));
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, POO, Rotation);
+
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
