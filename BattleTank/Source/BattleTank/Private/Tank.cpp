@@ -58,9 +58,4 @@ void ATank::Fire()
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Barrel not found to Fire"))
-		return;
-	}
 }
