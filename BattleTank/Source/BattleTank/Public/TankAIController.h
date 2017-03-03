@@ -25,5 +25,9 @@ private:
 
 	ATank* PlayerTank = nullptr;
 	ATank* ControlledAI = nullptr;
+
+	//How close the AI tank can get to the player
+	UPROPERTY(EditDefaultsOnly, Category = "Input")
+	float AcceptanceRadius = 300.f;
 	
 };
