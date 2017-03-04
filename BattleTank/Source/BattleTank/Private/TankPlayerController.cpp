@@ -9,6 +9,8 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	UE_LOG(LogTemp, Warning, TEXT("Tank PC-Begin"))
+
 	ATank* ControlledTank = GetControlledTank();
 	if (!ControlledTank)
 	{

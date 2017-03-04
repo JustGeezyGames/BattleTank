@@ -8,7 +8,7 @@
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-
+	UE_LOG(LogTemp, Warning, TEXT("TankAICont-BeginPlay"))
 }
 
 // Called every frame
