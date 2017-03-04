@@ -26,12 +26,12 @@ void UTankAimingComponent::InitializeComponents(UTankBarrel* BarrelToSet, UTankT
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	if (!Barrel) 
+	if (!ensure (Barrel))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Barrel not set"))
 		//return; 
 	}
-	if (!Turret) 
+	if (!ensure (Turret))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Turret not set"))
 		//return; 
@@ -41,7 +41,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 	//Calculate the OutLaunchVelocity
 	bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity(this, OutLaunchVelocity, StartLocation, HitLocation, LaunchSpeed, false, 0.f, 0.f, ESuggestProjVelocityTraceOption::DoNotTrace);
-	if (bHaveAimSolution)
+	if (ensure (bHaveAimSolution))
 	{
 		FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
@@ -51,7 +51,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 {
-	if (!Barrel || !Turret) { return; }	
+	if (!ensure (Barrel && Turret)) { return; }
 	// Get the Aim Direction
 	FRotator BarrelRotator = Barrel->GetForwardVector().Rotation();
 	FRotator AimAsRotator = AimDirection.Rotation();

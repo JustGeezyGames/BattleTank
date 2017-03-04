@@ -25,8 +25,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void AimAt(FVector HitLocation);
 
-	UFUNCTION(BlueprintCallable)
 	//Barrel Reference is set in Blueprint
+	UFUNCTION(BlueprintCallable)
 	void Fire();
 
 protected:

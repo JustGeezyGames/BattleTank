@@ -8,7 +8,6 @@
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("TankAICont-BeginPlay"))
 }
 
 // Called every frame
@@ -18,12 +17,12 @@ void ATankAIController::Tick(float DeltaTime)
 
 	PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	ControlledAI = Cast<ATank>(GetPawn());
-	if (!ControlledAI)
+	if (!ensure (ControlledAI))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AI not possessing a tank"));
 		return;
 	}
-	if (PlayerTank)
+	if (ensure (PlayerTank))
 	{
 		MoveToActor(PlayerTank, AcceptanceRadius);
 

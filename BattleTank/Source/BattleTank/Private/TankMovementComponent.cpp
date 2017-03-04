@@ -29,7 +29,7 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-	if (!LeftTrack || !RightTrack)
+	if (!ensure (LeftTrack && RightTrack))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Tracks not set"))
 		return;
@@ -41,7 +41,7 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 //Positive moves right, negative moves left
 void UTankMovementComponent::IntendRotate(float Throw)
 {
-	if (!LeftTrack || !RightTrack)
+	if (!ensure(LeftTrack && RightTrack))
 	{
 		UE_LOG(LogTemp, Warning, TEXT("Tracks not set"))
 		return;
