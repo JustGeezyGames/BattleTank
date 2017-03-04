@@ -9,8 +9,6 @@
 class UTankBarrel;
 class UTankTurret;
 class AProjectile;
-class UTankAimingComponent;
-
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -21,18 +19,12 @@ public:
 	// Sets default values for this pawn's properties
 	ATank();
 
-	UFUNCTION(BlueprintCallable)
-	void AimAt(FVector HitLocation);
-
 	//Barrel Reference is set in Blueprint
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
 protected:
 	virtual void BeginPlay() override;
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
 	
 private:
 

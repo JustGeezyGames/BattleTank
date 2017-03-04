@@ -5,7 +5,6 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
-class ATank;
 class UTankAimingComponent;
 /**
  * Responsible for helping the player aim
@@ -25,9 +24,6 @@ public:
 protected:	
 	virtual void BeginPlay() override;
 
-	UFUNCTION(BlueprintCallable)
-	ATank* GetControlledTank() const;
-
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimingCompRef);
 
@@ -46,4 +42,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000;
+
+	//UTankAimingComponent* AimingComponent = nullptr;
 };

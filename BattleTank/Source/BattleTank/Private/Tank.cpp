@@ -1,7 +1,6 @@
 // Copyright Just Geezy Games
 
 #include "BattleTank.h"
-#include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
 #include "Tank.h"
@@ -18,13 +17,6 @@ void ATank::BeginPlay()
 {
 	//Need to call Super for BP begin play to run
 	Super::BeginPlay();
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-}
-
-void ATank::AimAt(FVector HitLocation)
-{
-	if (!ensure (TankAimingComponent)) { return; }
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 void ATank::Fire()

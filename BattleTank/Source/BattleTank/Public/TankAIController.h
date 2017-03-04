@@ -5,7 +5,7 @@
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
-class ATank;
+
 /**
  * 
  */
@@ -22,9 +22,6 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-
-	ATank* PlayerTank = nullptr;
-	ATank* ControlledAI = nullptr;
 
 	//How close the AI tank can get to the player
 	UPROPERTY(EditDefaultsOnly, Category = "Input")
