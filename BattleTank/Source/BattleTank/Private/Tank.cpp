@@ -18,6 +18,7 @@ void ATank::BeginPlay()
 {
 	//Need to call Super for BP begin play to run
 	Super::BeginPlay();
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 void ATank::AimAt(FVector HitLocation)
@@ -28,7 +29,7 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-	if (!ensure(Barrel)) { return; }
+	if (!ensure (Barrel)) { return; }
 	
 	bool isReloaded = FPlatformTime::Seconds() - LastFireTime > ReloadTimeInSeconds;
 

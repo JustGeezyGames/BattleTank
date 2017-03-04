@@ -17,11 +17,8 @@ void ATankAIController::Tick(float DeltaTime)
 
 	PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 	ControlledAI = Cast<ATank>(GetPawn());
-	if (!ensure (ControlledAI))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AI not possessing a tank"));
-		return;
-	}
+	if (!ensure (ControlledAI)) { return; }
+
 	if (ensure (PlayerTank))
 	{
 		MoveToActor(PlayerTank, AcceptanceRadius);
@@ -31,10 +28,6 @@ void ATankAIController::Tick(float DeltaTime)
 
 		//Fire
 		ControlledAI->Fire();
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AI can't find player"));
 	}
 }
 

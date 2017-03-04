@@ -26,16 +26,8 @@ void UTankAimingComponent::InitializeComponents(UTankBarrel* BarrelToSet, UTankT
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
-	if (!ensure (Barrel))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Barrel not set"))
-		//return; 
-	}
-	if (!ensure (Turret))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Turret not set"))
-		//return; 
-	}
+	if (!ensure (Barrel && Turret)) { return; }
+
 	FVector OutLaunchVelocity;
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));	
 
