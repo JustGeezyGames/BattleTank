@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Just Geezy Games
 
 #pragma once
 
@@ -17,6 +17,9 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION(BlueprintCallable)
+	void AimTowardsCrosshair();
 	
 protected:	
 	virtual void BeginPlay() override;
@@ -24,8 +27,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 	ATank* GetControlledTank() const;
 
+
+
 private:
-	void AimTowardsCrosshair();
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
 	
 	UPROPERTY(EditDefaultsOnly)

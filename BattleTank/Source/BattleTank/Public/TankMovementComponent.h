@@ -23,8 +23,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void IntendRotate(float Throw);
 
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void InitializeComponent(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
+	UFUNCTION(BlueprintCallable)
+	void InitializeComponents(UTankTrack* LeftTrackToSet, UTankTrack* RightTrackToSet);
 
 private:
 	virtual void RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed) override;
