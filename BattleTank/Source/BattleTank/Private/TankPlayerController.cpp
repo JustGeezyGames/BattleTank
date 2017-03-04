@@ -9,10 +9,10 @@ void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	UTankAimingComponent* AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
-	if (ensure (AimingComponent))
-	{	
-		FoundAimingComponent(AimingComponent);
-	}
+	//if (ensure (AimingComponent))
+	//{	
+		//FoundAimingComponent(AimingComponent);
+	//}
 }
 
 // Called every frame
