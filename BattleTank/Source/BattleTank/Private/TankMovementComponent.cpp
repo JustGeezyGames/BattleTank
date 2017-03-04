@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Just Geezy Games
 
 #include "BattleTank.h"
 #include "TankTrack.h"
@@ -21,6 +21,9 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	float ForwardThrow = FVector::DotProduct(TankForward, AIForwardIntention);
 	IntendMoveForward(ForwardThrow);
+
+	FVector RotationThrow = FVector::CrossProduct(TankForward, AIForwardIntention);
+	IntendRotate(RotationThrow.Z);
 }
 
 
