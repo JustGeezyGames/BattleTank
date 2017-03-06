@@ -43,7 +43,7 @@ public:
 	EFiringStatus GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable)
-	int GetAmmoRemaining() const;
+	int32 GetAmmoRemaining() const;
 
 protected:
 	virtual void BeginPlay() override;
@@ -75,5 +75,5 @@ private:
 	double LastFireTime = 0;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	int Ammo = 3;
+	int32 Ammo = 3;
 };
