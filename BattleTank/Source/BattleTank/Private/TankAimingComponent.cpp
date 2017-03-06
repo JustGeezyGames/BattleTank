@@ -17,12 +17,23 @@ UTankAimingComponent::UTankAimingComponent()
 	// ...
 }
 
+EFiringStatus UTankAimingComponent::GetFiringState() const
+{
+	return FiringState;
+}
+
+int UTankAimingComponent::GetAmmoRemaining() const
+{
+	return Ammo;
+}
+
 void UTankAimingComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
 	// Set initial fire
 	LastFireTime = FPlatformTime::Seconds();
+	UE_LOG(LogTemp, Warning, TEXT("%i"), Ammo)
 }
 
 //Use blueprint to set Barrel and Turret
@@ -34,7 +45,11 @@ void UTankAimingComponent::InitializeComponents(UTankBarrel* BarrelToSet, UTankT
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if (FPlatformTime::Seconds() - LastFireTime < ReloadTimeInSeconds)
+	if (GetAmmoRemaining() == 0)
+	{
+		FiringState = EFiringStatus::OutOfAmmo;
+	}	
+	else if (FPlatformTime::Seconds() - LastFireTime < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringStatus::Reloading;
 	}
@@ -99,7 +114,7 @@ void UTankAimingComponent::MoveBarrelTowards()
 
 void UTankAimingComponent::Fire()
 {
-	if (FiringState != EFiringStatus::Reloading)
+	if (FiringState == EFiringStatus::Locked || FiringState == EFiringStatus::Aiming)
 	{
 		if (!ensure(Barrel && ProjectileBlueprint)) { return; }
 
@@ -110,7 +125,9 @@ void UTankAimingComponent::Fire()
 
 		Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
+		Ammo --;
 	}
+
 }
 
 
